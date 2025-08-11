@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una carta especial para ti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #fff5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #e75480;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            margin-bottom: 30px;
+        }
+
+        .name-input {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 12px 20px;
+            width: 70%;
+            border: 2px solid #ffb6c1;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #e75480;
+            box-shadow: 0 0 10px rgba(231, 84, 128, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #e75480, #ff69b4);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            margin: 15px 0;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(231, 84, 128, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 84, 128, 0.6);
+        }
+
+        .letter {
+            position: relative;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: none;
+            text-align: left;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 1s ease-out, padding 0.5s ease-out;
+            background-color: #fff9fb;
+            border-left: 5px solid #ffb6c1;
+        }
+
+        .letter.open {
+            display: block;
+            max-height: 1000px;
+            padding: 40px;
+        }
+
+        .letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #555;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+
+        .letter.open .letter-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter-header {
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #e75480;
+            text-align: center;
+        }
+
+        .flower-decoration {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .flower-1 {
+            top: 20px;
+            left: 20px;
+            transform: rotate(15deg);
+        }
+
+        .flower-2 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-10deg);
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f48fb1;
+            opacity: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            text-align: right;
+            color: #e75480;
+        }
+
+        .heart {
+            color: #e75480;
+            font-size: 1.2rem;
+            margin: 0 3px;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .image-gallery img {
+            width: 18%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .letter-header {
+                font-size: 1.5rem;
+            }
+            .letter-content {
+                font-size: 1.2rem;
+            }
+            .image-gallery img {
+                width: 48%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flower-decoration flower-1">
+            <img src="images/flower1.png" alt="Rosa decorativa" width="100" height="100" />
+        </div>
+        <div class="flower-decoration flower-2">
+            <img src="https://placehold.co/100x100" alt="Soft watercolor peony decoration in blush tones" />
+        </div>
+
+        <h1>Una carta especial para alguien especial</h1>
+        
+        <div class="intro">
+            <p>Esta carta está dedicada a alguien muy importante.<br>Por favor, escribe tu nombre para poder continuar:</p>
+        </div>
+
+        <div class="name-input">
+            <input type="text" id="nameInput" placeholder="Escribe tu nombre aquí..." />
+            <div>
+                <button id="submitName">Abrir mi carta</button>
+            </div>
+        </div>
+
+        <div class="letter" id="letter">
+            <div class="letter-header">Para <span id="letterName"></span>,</div>
+            <div class="letter-content" id="letterContent">
+                <p>Morat, nos asoció, pero fue un arreglo de computador lo que nos permitió encontrarnos por primera vez, y una segunda reparación la que nos permitió volver a encontrarnos. No pensé que en ti encontrara lo que busco en una mujer. Creo que nuestras conversaciones siempre eran sexualizadas y te pido perdón porque estaba dejando de ver el mujerón que eres. Pero en estos últimos días he visto en ti todo lo que puedo querer para mi vida, y quiero que siga pasando, encontrando más cosas de ti que me puedan enamorar. Amo los principios que tienes, pero sobre todo el cuidado y la sinceridad. No sé qué me has dado, pero el brillo de tus ojos en mi mente no he podido olvidar. Le ruego a Dios para que vuelva a pasar, aunque mi manera de amar es idílica y no he perdido todos los miedos que pueda tener. Contigo lo quiero intentar.</p>
+                
+                <p>Me pone nervioso escribirte porque sé que, si te sigo buscando, puedo encontrar muchas cosas de ti de las que ciegamente me puedo enamorar, y me pregunto muchas cosas. Entre esas, si seré correspondido y honrado. Pero déjame decirte que tienes la estatura perfecta para tu frente, para besar y decirte: "Todo va a estar bien cuando sientas que no puedes más".</p>
+                
+                <p>Eres el ambiente que quiero en los días grises, pero también en los felices. Eres la voz que quiero escuchar cuando una decisión deba tomar, pero a su vez eres todo lo lindo que a un chico le puede pasar. También te quiero para ver tus sueños cumplir ser una gran psicóloga y docente que atienda la niñez con cuidado y amor, pero sobre todo a tus padres honrar.</p>
+                
+                <p>Quédate, porque te quiero cada día conocer.<br>
+                Quédate, porque lo mejor te quiero entregar.<br>
+                Quédate, porque contigo lo quiero volver a intentar.<br>
+                Quédate, porque te juro que te haré sentir especial.</p>
+                
+                <p>Posdata: Me está gustando conocerte.</p>
+                <div class="signature" id="signature"></div>
+            </div>
+        </div>
+
+        <div class="image-gallery">
+            <img src="./Image1.jpg" alt="Imagen 1" />
+            <img src="./Image2.jpg" alt="Imagen 2" />
+            <img src="./Image3.jpg" alt="Imagen 3" />
+            <img src="./Image4.jpg" alt="Imagen 4" />
+            <img src="./Image5.jpg" alt="Imagen 5" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameInput = document.getElementById('nameInput');
+            const submitBtn = document.getElementById('submitName');
+            const letter = document.getElementById('letter');
+            const letterName = document.getElementById('letterName');
+            const letterContent = document.getElementById('letterContent');
+            const signature = document.getElementById('signature');
+            
+            submitBtn.addEventListener('click', function() {
+                const name = nameInput.value.trim();
+                
+                if (name === '') {
+                    nameInput.style.borderColor = '#ff0000';
+                    setTimeout(() => {
+                        nameInput.style.borderColor = '#ffb6c1';
+                    }, 1000);
+                    return;
+                }
+                
+                // Set the name in the letter
+                letterName.textContent = name;
+                
+                // You can customize the signature if needed
+                signature.textContent = document.querySelector('title').textContent === 'Una carta especial para ti' 
+                    ? 'Con amor, para ti' 
+                    : document.querySelector('title').textContent;
+                
+                // Show the letter with animation
+                letter.classList.add('open');
+                
+                // Create some falling hearts effect
+                createHearts();
+            });
+            
+            function createHearts() {
+                const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffd8d8'];
+                const container = document.querySelector('.container');
+                
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.className = 'confetti';
+                        heart.innerHTML = '❤️';
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.top = -10 + 'px';
+                        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                        heart.style.opacity = '1';
+                        heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+                        heart.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                        
+                        // Add animation
+                        const keyframes = `
+                            @keyframes fall {
+                                to {
+                                    transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                                    opacity: 0;
+                                }
+                            }
+                        `;
+                        
+                        const styleEl = document.createElement('style');
+                        styleEl.innerHTML = keyframes;
+                        document.head.appendChild(styleEl);
+                        
+                        container.appendChild(heart);
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            heart.remove();
+                            styleEl.remove();
+                        }, 5000);
+                    }, i * 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
